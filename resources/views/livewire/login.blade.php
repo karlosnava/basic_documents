@@ -1,13 +1,13 @@
 <div>
     <form wire:submit="login">
-        <x-input wire:model="email" type="email" label="Correo" class="mb-4" :required="true" />
+        <x-input wire:model="email" type="email" label="Correo" class="mb-4" />
         <div class="text-red-500">
             @error('email')
                 {{ $message }}
             @enderror
         </div>
 
-        <x-input wire:model="password" type="password" label="Contraseña" :required="true" />
+        <x-input wire:model="password" type="password" label="Contraseña" />
         <div class="text-red-500">
             @error('password')
                 {{ $message }}
