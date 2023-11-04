@@ -70,13 +70,19 @@ Una vez creada la base de datos deberá correr el siguiente comando:
 
 `--seed` alimentará las tablas con datos de prueba (indispensable para el funcionamiento del proyecto)
 
+## Correr servidor local
+Para correr la aplicación correctamente en el navegador; en la consola, debe ejuctar el siguiente comando
+``` bash
+  php artisan serve
+```
+Esto creará un servidor local donde podrá visualizar el sistema.
+
 ## Credenciales
 
 ``` bash
 Usuario: test@example.com
 Contraseña: password
 ```
-
 
 ## Screenshots
 
