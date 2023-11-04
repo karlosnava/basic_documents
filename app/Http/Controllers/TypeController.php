@@ -20,7 +20,7 @@ class TypeController extends Controller
     public function store(Request $request) {
         $request->validate([
             'tip_nombre'  => ['required', 'string', 'min:3', 'max:30'],
-            'tip_prefijo' => ['required', 'string', 'min:3', 'max:10', 'unique:tip_tipo_docs,tip_prefijo']
+            'tip_prefijo' => ['required', 'string', 'min:3', 'max:10', 'unique:tip_tipo_docs']
         ]);
 
         $tipo = TipTipoDoc::create([

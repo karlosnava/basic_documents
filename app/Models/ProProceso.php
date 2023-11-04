@@ -11,4 +11,8 @@ class ProProceso extends Model
 
     protected $primaryKey = 'pro_id';
     protected $guarded = ['pro_id', 'created_at', 'updated_at'];
+
+    public function documents() {
+        return $this->hasMany(DocDocumento::class, 'doc_id_proceso');
+    }
 }
