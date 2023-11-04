@@ -69,34 +69,7 @@ Una vez creada la base de datos deberá correr el siguiente comando:
 `migrate` correrá todas las migraciones/tablas necesarias para el proyecto.
 
 `--seed` alimentará las tablas con datos de prueba (indispensable para el funcionamiento del proyecto)
-## Variables de entorno
 
-Para correr este proyecto, Necesitará modificar algunas variables del archivo .env
-
-Clonaremos el archivo llamado `.env.example` y lo nombraremos `.env`
-
-`APP_NAME` es el nombre del sistema, para este caso lo llamaremos "Basic Document", debe quedar así: `APP_NAME="Basic Document"`
-
-
-Ahora, en la consola escribiremos el siguiente comando:
-
-```bash
-  php artisan key:generate
-```
-
-Notará que la variable de entorno `APP_KEY` ya no está vacía.
-
-## Base de datos
-En nuestro administrador de bases de datos crearemos la base de datos del proyecto, se recomienda nombrarla `basic_documents` con cotejamiento `utf8mb4_general_ci` en caso de querer nombrarla de otra forma debe modificar la variable de entorno `DB_DATABASE`
-
-Una vez creada la base de datos deberá correr el siguiente comando:
-
-```bash
-  php artisan migrate --seed
-```
-`migrate` correrá todas las migraciones/tablas necesarias para el proyecto.
-
-`--seed` alimentará las tablas con datos de prueba (indispensable para el funcionamiento del proyecto)
 ## Credenciales
 
 ``` bash
