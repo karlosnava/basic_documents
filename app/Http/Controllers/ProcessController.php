@@ -29,7 +29,7 @@ class ProcessController extends Controller
             'pro_prefijo' => Str::upper($request->pro_prefijo),
         ]);
 
-        return redirect()->route('processes.show', $proceso);
+        return redirect()->route('processes.show', $proceso)->with('message', 'Proceso creado correctamente.');
     }
 
     public function show(int $proceso) {
@@ -50,12 +50,12 @@ class ProcessController extends Controller
         ]);
 
         $proceso->update(['pro_nombre' => Str::upper($request->pro_nombre)]);
-        return redirect()->route('processes.show', $proceso);
+        return redirect()->route('processes.show', $proceso)->with('message', 'Proceso editado correctamente.');
     }
 
     public function destroy(int $proceso)
     {
         ProProceso::findOrFail($proceso)->delete();
-        return redirect()->route('processes.index');
+        return redirect()->route('processes.index')->with('message', 'Proceso eliminado correctamente.');
     }
 }

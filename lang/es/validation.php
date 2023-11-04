@@ -213,5 +213,14 @@ return [
         'updated_at'               => 'actualizado el',
         'username'                 => 'usuario',
         'year'                     => 'año',
+
+        'doc_nombre'     => 'nombre del documento',
+        'doc_contenido'  => 'contenido',
+        'doc_id_tipo'    => 'tipo de documento',
+        'doc_id_proceso' => 'tipo de proceso',
+        'tip_nombre' => 'nombre tipo de documento',
+        'tip_prefijo' => 'prefijo',
+        'pro_nombre' => 'nombre de proceso',
+        'pro_prefijo' => 'prefijo',
     ],
 ];

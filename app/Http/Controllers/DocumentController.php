@@ -6,7 +6,7 @@ use App\Http\Requests\DocumentRequest;
 use App\Models\DocDocumento;
 use App\Models\ProProceso;
 use App\Models\TipTipoDoc;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DocumentController extends Controller
 {
@@ -49,21 +49,22 @@ class DocumentController extends Controller
         $proceso = ProProceso::findOrFail($request->doc_id_proceso);
         $codigo  = $tipo->tip_prefijo . "-" .  $proceso->pro_prefijo;
 
-        $consecutivo = DocDocumento::where('doc_codigo', 'LIKE', "%{$codigo}%")->count() + 1;
-        $codigo .= "-{$consecutivo}";
-        
-        if ($codigo !== $document->doc_nombre) {
+        $codigo_actual = Str::replaceLast('-', '', Str::replaceMatches('/[0-9]+/', '', $document->doc_codigo));
+
+        if ($codigo !== $codigo_actual) {
+            $consecutivo = DocDocumento::where('doc_codigo', 'LIKE', "%{$codigo}%")->count() + 1;
+            $codigo .= "-{$consecutivo}";
             $request->merge([ 'doc_codigo' => $codigo ]);
         }
 
         $document->update($request->all());
-
-        return redirect()->route('documents.show', $document);
+        return redirect()->route('documents.show', $document)
+            ->with('message', 'El documento se ha actualizado correctamente.');
     }
 
     public function destroy(DocDocumento $document)
     {
         $document->delete();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'El documento se ha eliminado correctamente.');
     }
 }

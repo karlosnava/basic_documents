@@ -14,8 +14,8 @@ class Login extends Component
 
     public function rules() {
         return [
-            'email' => 'required|min:5|email',
-            'password' => 'required|min:7',
+            'email' => 'required|min:8|email',
+            'password' => 'required|min:8',
         ];
     }
 
@@ -31,7 +31,7 @@ class Login extends Component
             return session()->flash('message', __('auth.password'));
         }
         
-        session()->flash('message', __('auth.failed'));
+        session()->flash('message',  __('auth.failed'));
     }
 
     public function render() {

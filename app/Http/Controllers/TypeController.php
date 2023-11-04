@@ -9,7 +9,7 @@ use App\Models\TipTipoDoc;
 class TypeController extends Controller
 {
     public function index() {
-        $tipos = TipTipoDoc::orderBy('tip_nombre')->get();
+        $tipos = TipTipoDoc::orderBy('created_at', 'desc')->get();
         return view('types.index', compact('tipos'));
     }
 
@@ -28,7 +28,7 @@ class TypeController extends Controller
             'tip_prefijo' => Str::upper($request->tip_prefijo),
         ]);
 
-        return redirect()->route('types.show', $tipo);
+        return redirect()->route('types.show', $tipo)->with('message', 'Tipo de documento creado correctamente.');
     }
 
     public function show(int $tipo) {
@@ -49,11 +49,11 @@ class TypeController extends Controller
         ]);
 
         $tipo->update(['tip_nombre' => Str::upper($request->tip_nombre)]);
-        return redirect()->route('types.show', $tipo);
+        return redirect()->route('types.show', $tipo)->with('message', 'Tipo de documento actualizado correctamente.');
     }
 
     public function destroy(int $tipo) {
         TipTipoDoc::findOrFail($tipo)->delete();
-        return redirect()->route('types.index');
+        return redirect()->route('types.index')->with('message', 'Tipo de documento eliminado correctamente.');
     }
 }
